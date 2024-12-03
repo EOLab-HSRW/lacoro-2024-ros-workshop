@@ -1,0 +1,52 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+  export DEBIAN_FRONTEND=noninteractive
+
+  apt update && apt install -y locales
+  locale-gen en_US en_US.UTF-8
+  update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+  export LANG=en_US.UTF-8
+
+  apt install -y software-properties-common
+  add-apt-repository universe
+
+  apt-get update
+  apt-get install -y \
+    curl \
+    build-essential
+
+  curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+  apt update
+  apt upgrade
+
+  apt install -y ros-humble-desktop
+
+  apt-get update
+  apt-get install -y \
+    ros-dev-tools \
+    python3-pip \
+    ros-humble-ros-gz
+
+  mkdir -p demo_ws/src
+  cd demo_ws
+  git clone https://github.com/husarion/rosbot_ros src/
+  export GZ_VERSION=fortress
+  bash -c "source /opt/ros/humble/setup.bash"
+  vcs import src < src/rosbot/rosbot_hardware.repos
+  vcs import src < src/rosbot/rosbot_simulation.repos
+
+  rosdep init || true
+  rosdep update --rosdistro humble
+  rosdep install --as-root=apt:false -i --from-path src --rosdistro humble -y
+
+  rm -rf /var/lib/apt/lists/*
+  apt-get clean
+
+
+%environment
+  export LANG=en_US.UTF-8
