@@ -8,6 +8,6 @@ hero:
   actions:
     - theme: brand
       text: Material
-      link: /part-1
+      link: /welcome
 ---
 

@@ -9,15 +9,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Welcome', link: '/welcome' },
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Part 1 - Introduction',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       },
       {
@@ -29,7 +28,9 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/EOLab-HSRW/lacoro-2024-ros-workshop' },
+      { icon: 'linkedin', link:  'https://www.linkedin.com/showcase/earth-observation-lab/'},
+      { icon: 'pinboard', link: 'https://www.eolab.de/'}
     ]
   }
 })
