@@ -11,6 +11,7 @@ Install all the required tooling:
 
 ```
 sudo apt update && sudo apt install -y git ansible
-cd ~ && git clone https://github.com/EOLab-HSRW/lacoro-2024-ros-workshop.git
+mkdir -p ~/lsc_ws/src && cd ~/lsc_ws/src/
+git clone https://github.com/EOLab-HSRW/lacoro-2024-ros-workshop.git && cd lacoro-2024-ros-workshop
 ansible-playbook local.yml --ask-become
 ```
