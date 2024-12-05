@@ -1,0 +1,64 @@
+- hosts: localhost
+  vars:
+    ros2_gpg_key_url: https://raw.githubusercontent.com/ros/rosdistro/master/ros.key
+    ros2_repository_url: http://packages.ros.org/ros2/ubuntu
+    ros2_distro: humble
+    robot_name: rosbot
+  pre_tasks:
+    - name: Apt update
+      become: true
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+    - name: Create workspace
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      with_items:
+        - "~/lsc_ws/src"
+    - name: Move repository into workspace source
+      command: mv ~/lacoro-2024-ros-workshop ~/lsc_ws/src/
+      args:
+        removes: ~/lacoro-2024-ros-workshop
+      when: not ansible_check_mode
+    - name: Change to workspace directory for further operations
+      shell: cd ~/lsc_ws/src/lacoro-2024-ros-workshop
+      args:
+        chdir: ~/lsc_ws/src/lacoro-2024-ros-workshop
+  tasks:
+    - name: Install ROS
+      import_tasks: tasks/ros.yml
+      tags:
+        - robot
+        - ros
+    - name: Set environment information
+      import_tasks: tasks/env.yml
+      tags: 
+        - developer
+        - robot
+        - env
+    - name: System tooling
+      import_tasks: tasks/tooling.yml
+      tags: 
+        - developer
+        - robot
+        - tooling
+    # - name: Pull external repos
+    #   import_tasks: tasks/vcs.yml
+    #   tags:
+    #     - developer
+    #     - robot
+    #     - vcs
+    - name: Install dependencies
+      import_tasks: tasks/rosdep.yml
+      tags:
+        - robot
+        - developer
+        - rosdep
+  handlers:
+    - name: Reload ~/.bashrc
+      shell: source ~/.bashrc
+      args:
+        executable: /bin/bash
