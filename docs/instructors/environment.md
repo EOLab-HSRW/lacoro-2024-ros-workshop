@@ -7,9 +7,10 @@ Computer with `am64` architecture.
 
 ## Setup
 
-Install all the required tooling, using the `install.sh` bash script:
+Install all the required tooling:
 
 ```
-bash install.sh
+sudo apt update && sudo apt install -y git ansible
+cd ~ && git clone https://github.com/EOLab-HSRW/lacoro-2024-ros-workshop.git
+ansible-playbook local.yml --ask-become
 ```
-
