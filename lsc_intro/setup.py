@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             f"image = {package_name}.image:main",
-            f"simple_proc = {package_name}.simple_proc:main"
+            f"simple_proc = {package_name}.simple_proc:main",
+            f"detection = {package_name}.detection:main"
         ],
     },
 )
