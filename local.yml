@@ -11,22 +11,6 @@
         force_apt_get: true
         update_cache: true
         state: present
-    - name: Create workspace
-      file:
-        path: "{{ item }}"
-        state: directory
-        mode: '0755'
-      with_items:
-        - "~/lsc_ws/src"
-    - name: Move repository into workspace source
-      command: mv ~/lacoro-2024-ros-workshop ~/lsc_ws/src/
-      args:
-        removes: ~/lacoro-2024-ros-workshop
-      when: not ansible_check_mode
-    - name: Change to workspace directory for further operations
-      shell: cd ~/lsc_ws/src/lacoro-2024-ros-workshop
-      args:
-        chdir: ~/lsc_ws/src/lacoro-2024-ros-workshop
   tasks:
     - name: Install ROS
       import_tasks: tasks/ros.yml
