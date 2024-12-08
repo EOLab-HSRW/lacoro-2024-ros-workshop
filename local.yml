@@ -4,6 +4,7 @@
     ros2_repository_url: http://packages.ros.org/ros2/ubuntu
     ros2_distro: humble
     robot_name: rosbot
+    ws_name: lsc_ws
   pre_tasks:
     - name: Apt update
       become: true
@@ -29,12 +30,12 @@
         - developer
         - robot
         - tooling
-    # - name: Pull external repos
-    #   import_tasks: tasks/vcs.yml
-    #   tags:
-    #     - developer
-    #     - robot
-    #     - vcs
+    - name: Pull external repos
+      import_tasks: tasks/vcs.yml
+      tags:
+        - developer
+        - robot
+        - vcs
     - name: Install dependencies
       import_tasks: tasks/rosdep.yml
       tags:

@@ -5,6 +5,6 @@
   debug:
     msg: "The current working directory is: {{ current_directory_output.stdout }}"
 - name: Run vcs import < .repos
-  shell: vcs import < .repos
+  shell: vcs import < lacoro-2024-ros-workshop/.repos
   args:
-    chdir: "{{ current_directory_output.stdout }}"
+    chdir: "~/{{ ws_name }}/src/"
