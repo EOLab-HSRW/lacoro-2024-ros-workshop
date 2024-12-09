@@ -16,7 +16,7 @@ export default defineConfig({
       {
         text: 'Session 1',
         items: [
-          { text: 'Wrap-up', link: 'wrap-up' },
+          { text: 'Wrap-up', link: '/session-1/wrap-up' },
         ]
       },
       {
