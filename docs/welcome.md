@@ -2,8 +2,9 @@
 
 ## Workshop Outline
 
-Part 1:
-- Wrap up pub-sub
+Session 1
+Session 2
+Session 3
 
 ## Fundamentals
 
