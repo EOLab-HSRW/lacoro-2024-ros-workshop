@@ -13,8 +13,10 @@ export default defineConfig({
     ],
 
     sidebar: [
+      { text: "Welcome", link: "welcome"},
+      { text: "Fundamentals", link: "fundamentals"},
       {
-        text: 'Part 1 - Introduction',
+        text: 'Session 1',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
         ]
