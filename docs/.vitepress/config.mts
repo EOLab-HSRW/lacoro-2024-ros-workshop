@@ -14,7 +14,6 @@ export default defineConfig({
 
     sidebar: [
       { text: "Welcome", link: "welcome"},
-      { text: "Fundamentals", link: "fundamentals"},
       {
         text: 'Session 1',
         items: [
