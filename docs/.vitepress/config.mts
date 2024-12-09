@@ -34,5 +34,8 @@ export default defineConfig({
       { icon: 'linkedin', link:  'https://www.linkedin.com/showcase/earth-observation-lab/'},
       { icon: 'pinboard', link: 'https://www.eolab.de/'}
     ]
+  },
+  rewrites: {
+    'welcome.md': 'index.md',
   }
 })
