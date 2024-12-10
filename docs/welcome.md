@@ -1,15 +1,14 @@
-# Welcome
+# ROS Workshop
 
-## Workshop Outline
+## Workshop Description
 
-Session 1
-Session 2
-Session 3
 
-## Fundamentals
+## Schedule
 
-- [workspace](https://robotics.harleylara.com/en/ros2-ws)
-- [packages](https://robotics.harleylara.com/en/ros2-pkgs)
-- [nodes](https://robotics.harleylara.com/en/ros2-nodes)
-- [interfaces](https://robotics.harleylara.com/en/ros2-interfaces)
-- [topics](https://robotics.harleylara.com/en/ros2-topics)
+| Session      | Date       | Time          | Location |
+|--------------|------------|---------------|----------|
+| Introduction | 10.12.2024 | 15:15 - 18:15 | B204?    |
+| Control      | 11.12.2024 | 15:15 - 18:15 | B204?    |
+| Planning     | 12.12.2024 | 15:15 - 18:15 | B204?    |
+
+
