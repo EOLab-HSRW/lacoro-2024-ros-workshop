@@ -4,7 +4,7 @@
     ros2_repository_url: http://packages.ros.org/ros2/ubuntu
     ros2_distro: humble
     robot_name: skratch
-    ws_name: lsc_ws
+    ws_name: lss_ws
   pre_tasks:
     - name: Apt update
       become: true
