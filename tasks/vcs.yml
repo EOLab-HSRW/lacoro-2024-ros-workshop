@@ -4,7 +4,13 @@
 - name: Print the current working directory
   debug:
     msg: "The current working directory is: {{ current_directory_output.stdout }}"
-- name: Run vcs import < .repos
-  shell: vcs import < lacoro-2024-ros-workshop/.repos
+- name: Get Skratch repo
+  git:
+    repo: https://github.com/RoBonn-Systems/skratch_ros2.git
+    dest: "~/{{ ws_name }}/src/skratch_ros2"
+    clone: yes
+    update: yes
+- name: Run vcs import
+  shell: cat lacoro-2024-ros-workshop/.repos skratch_ros2/core.repos | vcs import .
   args:
     chdir: "~/{{ ws_name }}/src/"
