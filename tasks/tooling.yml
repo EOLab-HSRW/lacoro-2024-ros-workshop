@@ -4,7 +4,7 @@
     name: 
       - tmux
       - net-tools
-      - pip3
+      - python-is-python3
 - name: Get VS Code pre
   become: true
   apt:
