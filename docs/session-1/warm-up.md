@@ -11,6 +11,12 @@ Knowledge required:
 
 ## Fundamentals
 
+Before to start make sure to run this command:
+
+```
+lss_update
+```
+
 - [workspace](https://robotics.harleylara.com/en/ros2-ws)
 - [packages](https://robotics.harleylara.com/en/ros2-pkgs)
 - [nodes](https://robotics.harleylara.com/en/ros2-nodes)
