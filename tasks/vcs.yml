@@ -10,6 +10,7 @@
     dest: "~/{{ ws_name }}/src/skratch_ros2"
     clone: yes
     update: yes
+    force: yes
 - name: Run vcs import
   shell: cat lacoro-2024-ros-workshop/.repos skratch_ros2/core.repos | vcs import .
   args:
