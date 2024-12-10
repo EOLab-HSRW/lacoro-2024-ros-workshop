@@ -4,3 +4,63 @@
     name: 
       - tmux
       - net-tools
+- name: Get VS Code pre
+  become: true
+  apt:
+    name:
+      - wget
+      - gpg
+      - apt-transport-https
+- name: Download Microsoft's GPG key
+  get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: /tmp/microsoft.asc
+- name: Convert GPG key to dearmored format
+  command: gpg --dearmor --output /tmp/packages.microsoft.gpg /tmp/microsoft.asc
+  args:
+    creates: /tmp/packages.microsoft.gpg
+- name: Move the dearmored GPG key to the apt keyrings directory
+  become: true
+  copy:
+    src: /tmp/packages.microsoft.gpg
+    dest: /etc/apt/keyrings/packages.microsoft.gpg
+    owner: root
+    group: root
+    mode: '0644'
+- name: Remove any existing GPG keys or references (cleanup old keyrings)
+  become: yes
+  file:
+    path: "/usr/share/keyrings/packages.microsoft.gpg"
+    state: absent
+- name: Add VSCode repository
+  become: true
+  copy:
+    dest: /etc/apt/sources.list.d/vscode.list
+    content: |
+      deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main
+    owner: root
+    group: root
+    mode: '0644'
+- name: Remove temporary files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/microsoft.asc
+    - /tmp/packages.microsoft.gpg
+- name: Update apt cache
+  become: yes
+  apt:
+    update_cache: yes
+- name: Install vscode
+  become: true
+  apt:
+    name: code
+    state: present
+- name: Install VSCode Extensions
+  shell: >
+    code --install-extension {{ item }}
+  with_items:
+    - ms-iot.vscode-ros
+  args:
+    executable: /bin/bash
