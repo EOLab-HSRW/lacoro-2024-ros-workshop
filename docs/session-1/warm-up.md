@@ -1,5 +1,7 @@
 # Warm-up
 
+This session is designed to bring the participants' abilities to the same level so that the control and planning subjects can be understood by all.
+
 ## Prerequisites
 
 Knowledge required:
@@ -11,12 +13,8 @@ Knowledge required:
 
 ## Fundamentals
 
-Before to start make sure to run this command:
-
-```
-lss_update
-```
-
+The following links correspond to a set of notes that introduce the basic concepts required to work with ROS:
+- [ros2 introduction](https://robotics.harleylara.com/en/ros2-intro)
 - [workspace](https://robotics.harleylara.com/en/ros2-ws)
 - [packages](https://robotics.harleylara.com/en/ros2-pkgs)
 - [nodes](https://robotics.harleylara.com/en/ros2-nodes)
